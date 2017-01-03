@@ -62,8 +62,8 @@ Try {
 	[string]$appArch = 'x64'
 	[string]$appLang = 'EN'
 	[string]$appRevision = '01'
-	[string]$appScriptVersion = '1.0.0'
-	[string]$appScriptDate = '12/06/2016'
+	[string]$appScriptVersion = '1.0.1'
+	[string]$appScriptDate = '12/09/2016'
 	[string]$appScriptAuthor = 'Metropolitan State University of Denver'
 	##*===============================================
 	## Variables: Install Titles (Only set here to override defaults set by the toolkit)
@@ -139,8 +139,7 @@ Try {
 		[string]$installPhase = 'Post-Installation'
 
 		## <Perform Post-Installation tasks here>
-		New-Folder -Path "$envSystemDrive\Users\Default\AppData\Roaming\FileZilla"
-		Copy-File -Path "$dirSupportFiles\*" -Destination "$envSystemDrive\Users\Default\AppData\Roaming\FileZilla" -Recurse
+		Copy-File -Path "$dirSupportFiles\*" -Destination "$envProgramFiles\FileZilla FTP Client" -Recurse
 		## Display a message at the end of the install
 		If (-not $useDefaultMsi) {}
 	}
@@ -180,7 +179,7 @@ Try {
 		[string]$installPhase = 'Post-Uninstallation'
 
 		## <Perform Post-Uninstallation tasks here>
-		Remove-Folder -Path "$envSystemDrive\Users\Default\AppData\Roaming\FileZilla"
+		Remove-Folder -Path "$envProgramFiles\FileZilla FTP Client"
 	}
 
 	##*===============================================
@@ -201,8 +200,8 @@ Catch {
 # SIG # Begin signature block
 # MIIU4wYJKoZIhvcNAQcCoIIU1DCCFNACAQExDzANBglghkgBZQMEAgEFADB5Bgor
 # BgEEAYI3AgEEoGswaTA0BgorBgEEAYI3AgEeMCYCAwEAAAQQH8w7YFlLCE63JNLG
-# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCDJtefKGBh7RVUa
-# x88Kgc/SAdB1bXFnsVij1vU4Xvox26CCD4cwggQUMIIC/KADAgECAgsEAAAAAAEv
+# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCBDWRWesCogjgPM
+# HoOAgXkbnh8OkNBAnsPQabD3w4WA7KCCD4cwggQUMIIC/KADAgECAgsEAAAAAAEv
 # TuFS1zANBgkqhkiG9w0BAQUFADBXMQswCQYDVQQGEwJCRTEZMBcGA1UEChMQR2xv
 # YmFsU2lnbiBudi1zYTEQMA4GA1UECxMHUm9vdCBDQTEbMBkGA1UEAxMSR2xvYmFs
 # U2lnbiBSb290IENBMB4XDTExMDQxMzEwMDAwMFoXDTI4MDEyODEyMDAwMFowUjEL
@@ -289,26 +288,26 @@ Catch {
 # FgNlZHUxGTAXBgoJkiaJk/IsZAEZFgltc3VkZW52ZXIxFTATBgoJkiaJk/IsZAEZ
 # FgV3aW5hZDEZMBcGA1UEAxMQd2luYWQtVk1XQ0EwMS1DQQITfwAAACITuo77mvOv
 # 9AABAAAAIjANBglghkgBZQMEAgEFAKBmMBgGCisGAQQBgjcCAQwxCjAIoAKAAKEC
-# gAAwGQYJKoZIhvcNAQkDMQwGCisGAQQBgjcCAQQwLwYJKoZIhvcNAQkEMSIEIIvv
-# OG6gdfTSVLaSwjRSqpJvMRpsiBWAXpcDX5pqZNvQMA0GCSqGSIb3DQEBAQUABIIB
-# AA2jJ/pZVR57zgcDo9TkIuuFWbUr31pnc+Oy5yG1Hu9U+0XM3/Hebb+yqFgoJYQk
-# 44fMlxe49VlT41SoC0F0L47D5uCf4tvHo+6AsnMwLa+0LKAgArLREmUfQGKJdKSS
-# O+P2HVtx0ZLviJQ67ugHEQ9tDH9Fqp6tEx4BSdf+xmnWiKyE11nnKYqkahjQTPp+
-# cLmADL3MX2jvCD5ZOuhujWp7UV84C9JkeYqXJf9MsjqR8kErjZJ2n6Hs17zx/m10
-# KZLukJKlC/oYUtClxgSmvxZqHUKed9boBvcefUJoBk3Wk3uqe9aKeDEKBE2UNM4S
-# LyNZxrbo7A0q+cXVb126NAyhggKiMIICngYJKoZIhvcNAQkGMYICjzCCAosCAQEw
+# gAAwGQYJKoZIhvcNAQkDMQwGCisGAQQBgjcCAQQwLwYJKoZIhvcNAQkEMSIEIGoL
+# Q6DfBaehr5S15IjPtSRl+I766vYcjoywM11HQEBVMA0GCSqGSIb3DQEBAQUABIIB
+# AKUTNhnRXb3UvmXs+NVEYgHEebv312b8NEidP/jgSFIztbS/J2UnbO4HyG7QIMm7
+# h94sElYgeiLGcvVI45p9EkGDPHveTPbJOdFHznP55rIIF4kcpMGYQ0N4STyGzzaF
+# sRXkMIyhucZyfGC9aOmPvb74GJjMYfpuFFexxP+edqiToA7Yd5SGniP5rUfte7nD
+# CoSdbbF4X6XZiOjwGgMW3da1KHQqN6kZ6Cy41Q4uiuGNr3VE4lQ47gyX9d3/SxZN
+# Xf9Cn2ZOVS0DJ0RnMX3x8+fATJ7hfb+ovQc7W3yVNlGUEM4qX2idlYYs9WuwjJYc
+# E2UvWEBvnFLu5KWuIUxzaf+hggKiMIICngYJKoZIhvcNAQkGMYICjzCCAosCAQEw
 # aDBSMQswCQYDVQQGEwJCRTEZMBcGA1UEChMQR2xvYmFsU2lnbiBudi1zYTEoMCYG
 # A1UEAxMfR2xvYmFsU2lnbiBUaW1lc3RhbXBpbmcgQ0EgLSBHMgISESHWmadklz7x
 # +EJ+6RnMU0EUMAkGBSsOAwIaBQCggf0wGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEH
-# ATAcBgkqhkiG9w0BCQUxDxcNMTYxMTA5MTUyOTM2WjAjBgkqhkiG9w0BCQQxFgQU
-# tiieYK6e1DVjsw8amc/rirnWXMUwgZ0GCyqGSIb3DQEJEAIMMYGNMIGKMIGHMIGE
+# ATAcBgkqhkiG9w0BCQUxDxcNMTYxMjEwMDE1NjA5WjAjBgkqhkiG9w0BCQQxFgQU
+# WxUcOsLCY8lk0SLciMFXRTI+9bcwgZ0GCyqGSIb3DQEJEAIMMYGNMIGKMIGHMIGE
 # BBRjuC+rYfWDkJaVBQsAJJxQKTPseTBsMFakVDBSMQswCQYDVQQGEwJCRTEZMBcG
 # A1UEChMQR2xvYmFsU2lnbiBudi1zYTEoMCYGA1UEAxMfR2xvYmFsU2lnbiBUaW1l
 # c3RhbXBpbmcgQ0EgLSBHMgISESHWmadklz7x+EJ+6RnMU0EUMA0GCSqGSIb3DQEB
-# AQUABIIBACRo2UHX8DOrjvE1XYi2bowfVwuyeDvMcwEZrYHL/0N9dU/TxohM45Zt
-# SpEJOKdL1LpWzPEVvO/1aRqVgiR9SusFoR5AXvshEdzuAtiamUcSnQ84tly5FfZ4
-# TGdCHtpIlQjoaccXMnpGqBYz32a4ZdZTYZaOqxPvFBjljggSrNmSou8RbQk8QEEF
-# MdRggQk7PYCRxHPbQUftY6Nv7Vii7Yq53bF1WYgbnFbXWDSdH0SUC74v03ATCKLC
-# i/90YNWDduRYNQIS9qpna3Zgh1QDVQalLVWKiytTDQeCCET00WMZT5IL7vEa2UvA
-# 70Q1uHFekIAQXfs3bkcog69605/eoPw=
+# AQUABIIBAAtXfEiEimw0pntEbCrZgvBbWQHQAlY/IKMf+VJRe3Mf3e0w5sfG+oVR
+# TFuNw1uN62fVVEwi7IrGBF/bdX8+8HnsVuPEuJVVWKcXh4udmTknafEfZQVVFXta
+# LUdlZUPcwAWxtFj+7Usm9qQyJfbmrh9tT31sxqQuAm86YzB7UEOazVqOG9FsvUU7
+# RmFfMdXd1OQl6rjRuhSBRlKvjt+PRD8a4WwzcWnhLTFqllDLU/5n6XaK/RhY8Zii
+# J1h9++WqfauoEUKt0jvRhsCBTKqfw5YOYLNHLOGkqBwP3IGe8IVNqeFZ1n86uSWV
+# STHgIyjk9LXQwWseoEcyse0sRXxJX6E=
 # SIG # End signature block

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+
+<FileZilla3>
+
+<Settings>
+
+<Setting name="Disable update check">1</Setting>
+
+<Setting name="Greeting version">3.23.0.2</Setting>
+<Setting name="Greeting resources"/>
+<Setting name="Onetime Dialogs"/>
+</Settings>
+
+</FileZilla3>
