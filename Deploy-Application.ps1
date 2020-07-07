@@ -124,7 +124,7 @@ Try {
 		Show-InstallationWelcome -CloseApps 'filezilla' -CheckDiskSpace -PersistPrompt
 
 		## Show Progress Message (with the default message)
-		Show-InstallationProgress -StatusMessage "Installing Filezilla. Please wait..."
+		Show-InstallationProgress -StatusMessage "Installing $installTitle. Please wait..."
 
 		## <Perform Pre-Installation tasks here>
 
