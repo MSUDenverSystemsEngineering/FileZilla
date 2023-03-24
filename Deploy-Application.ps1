@@ -37,11 +37,9 @@
 .LINK
 	http://psappdeploytoolkit.com
 #>
-[CmdletBinding()]
 
 ## Suppress PSScriptAnalyzer errors for not using declared variables during AppVeyor build
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "", Justification="Suppress AppVeyor errors on unused variables below")]
-
 Param (
 	[Parameter(Mandatory=$false)]
 	[ValidateSet('Install','Uninstall','Repair')]
@@ -58,8 +56,6 @@ Param (
 )
 
 Try {
-	## Set the script execution policy for this process
-	Try { Set-ExecutionPolicy -ExecutionPolicy 'ByPass' -Scope 'Process' -Force -ErrorAction 'Stop' } Catch { Write-Error "Failed to set the execution policy to Bypass for this process." }
 
 	##*===============================================
 	##* VARIABLE DECLARATION
@@ -142,7 +138,6 @@ Try {
 
 		## <Perform Installation tasks here>
 		Execute-Process -Path "FileZilla_${appVersion}_win64-setup.exe" -Parameters "/S" -WindowStyle "Hidden"
-
 
 		##*===============================================
 		##* POST-INSTALLATION
